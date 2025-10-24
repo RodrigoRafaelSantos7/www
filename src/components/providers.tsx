@@ -6,6 +6,7 @@ const Providers = ({ children }: { children: ReactNode }) => (
   <ThemeProvider
     attribute="class"
     defaultTheme="system"
+    disableTransitionOnChange
     enableSystem
     storageKey="rodrigosantosdev-theme"
   >
