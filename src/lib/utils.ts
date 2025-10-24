@@ -6,8 +6,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function getUrl() {
-  return env.NODE_ENV !== "production"
+export const getUrl = () =>
+  env.NODE_ENV !== "production"
     ? `http://${env.VERCEL_URL}`
     : `https://${env.VERCEL_URL}`;
-}
