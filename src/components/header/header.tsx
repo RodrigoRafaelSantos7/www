@@ -1,7 +1,7 @@
-import { AnimateIn } from "./animations/animate";
-import { HeaderLink } from "./header-link";
-import { SocialMedia } from "./socials";
-import { ThemeToggle } from "./theme-toggle";
+import { AnimateIn } from "@/components/animations/animate";
+import { HeaderLink } from "@/components/header/header-link";
+import { SocialMedia } from "@/components/header/socials/socials";
+import { ThemeToggle } from "@/components/theme/theme-toggle";
 
 const Header = () => (
   <AnimateIn variant="fadeUp">

@@ -1,6 +1,6 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { ReactNode } from "react";
-import { ThemeProvider } from "./theme-provider";
+import { ThemeProvider } from "@/components/theme/theme-provider";
 
 const Providers = ({ children }: { children: ReactNode }) => (
   <ThemeProvider

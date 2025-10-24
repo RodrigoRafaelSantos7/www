@@ -3,10 +3,10 @@
 import { track } from "@vercel/analytics";
 import Link from "next/link";
 import type { SVGProps } from "react";
-import Email from "./icons/email";
-import Github from "./icons/github";
-import LinkedIn from "./icons/linkedin";
-import X from "./icons/x";
+import Email from "@/components/icons/email";
+import Github from "@/components/icons/github";
+import LinkedIn from "@/components/icons/linkedin";
+import X from "@/components/icons/x";
 
 type IconName = "Twitter" | "GitHub" | "LinkedIn" | "Email";
 
