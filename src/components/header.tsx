@@ -16,26 +16,16 @@ const Header = () => (
       </AnimateIn>
       <AnimateIn delay={0.4} variant="fadeUp">
         <p className="mb-8 max-w-xl items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
-          Software Engineer from Lisbon. Contact me below. Currently building{" "}
+          Software Engineer from Lisbon. Contact me below. Currently @{" "}
           <Link
             className="text-primary underline-offset-4 hover:underline"
-            href="https://0.email"
-            onClick={() => track("zero_email_clicked")}
+            href="https://www.upgraide.ai/"
+            onClick={() => track("upgraide_clicked")}
             rel="noopener noreferrer"
             target="_blank"
           >
-            Mail0
+            Upgraide.ai
           </Link>{" "}
-          and{" "}
-          <Link
-            className="text-primary underline-offset-4 hover:underline"
-            href="https://0.email"
-            onClick={() => track("zero_email_clicked")}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <span className="line-through">oss.now</span>
-          </Link>
           .
         </p>
       </AnimateIn>

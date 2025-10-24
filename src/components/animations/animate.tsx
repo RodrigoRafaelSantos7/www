@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { useObserverAnimation } from "./hooks/use-observer-animation";
 
-const MS_PER_SECOND = 1000;
+// biome-ignore lint/style/noMagicNumbers: animation timing and transforms
+const EASE_IN_OUT = [0.16, 1, 0.3, 1] as const;
 
 type AnimationVariant =
   | "fadeUp"
@@ -22,35 +22,37 @@ type AnimateInProps = {
   once?: boolean;
 };
 
-function getVariantTransform(
-  variant: AnimationVariant,
-  isVisible: boolean
-): Record<string, string> {
-  if (isVisible && variant === "reveal") {
-    return { clipPath: "inset(0 0 0 0)" };
-  }
+type VariantConfig = {
+  initial: Record<string, unknown>;
+  whileInView: Record<string, unknown>;
+};
 
-  if (!isVisible) {
-    switch (variant) {
-      case "fadeUp":
-        return { transform: "translateY(20px)" };
-      case "fadeLeft":
-        return { transform: "translateX(-20px)" };
-      case "fadeRight":
-        return { transform: "translateX(20px)" };
-      case "scale":
-        return { transform: "scale(0.95)" };
-      case "reveal":
-        return { clipPath: "inset(0 100% 0 0)", transform: "none" };
-      case "none":
-        return { opacity: "1" };
-      default:
-        return {};
-    }
-  }
-
-  return {};
-}
+const variantMap: Record<AnimationVariant, VariantConfig> = {
+  fadeUp: {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+  },
+  fadeLeft: {
+    initial: { opacity: 0, x: -20 },
+    whileInView: { opacity: 1, x: 0 },
+  },
+  fadeRight: {
+    initial: { opacity: 0, x: 20 },
+    whileInView: { opacity: 1, x: 0 },
+  },
+  scale: {
+    initial: { opacity: 0, scale: 0.95 },
+    whileInView: { opacity: 1, scale: 1 },
+  },
+  reveal: {
+    initial: { clipPath: "inset(0 100% 0 0)" },
+    whileInView: { clipPath: "inset(0 0 0 0)" },
+  },
+  none: {
+    initial: { opacity: 1 },
+    whileInView: { opacity: 1 },
+  },
+};
 
 export function AnimateIn({
   children,
@@ -59,47 +61,21 @@ export function AnimateIn({
   variant = "fadeUp",
   once = true,
 }: AnimateInProps) {
-  const [isVisible, setIsVisible] = useState(false);
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setIsVisible(true);
-      if (once) {
-        setHasAnimated(true);
-      }
-    }, delay * MS_PER_SECOND);
-
-    return () => clearTimeout(timeout);
-  }, [delay, once]);
-
-  const shouldObserve =
-    !once && typeof window !== "undefined" && "IntersectionObserver" in window;
-
-  useObserverAnimation(ref, {
-    shouldObserve,
-    hasAnimated,
-    once,
-    onVisibilityChange: setIsVisible,
-  });
-
-  const shouldSkipAnimation = hasAnimated && once;
-
-  const animationStyles = shouldSkipAnimation
-    ? {}
-    : {
-        opacity: isVisible ? 1 : 0,
-        transform: "none",
-        transition:
-          "opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), transform 600ms cubic-bezier(0.16, 1, 0.3, 1)",
-        transitionDelay: `${delay}s`,
-        ...getVariantTransform(variant, isVisible),
-      };
+  const variants = variantMap[variant];
 
   return (
-    <div className={cn(className)} ref={ref} style={animationStyles}>
+    <motion.div
+      className={cn(className)}
+      initial={variants.initial as Record<string, number | string>}
+      transition={{
+        duration: 0.8,
+        ease: EASE_IN_OUT as [number, number, number, number],
+        delay,
+      }}
+      viewport={{ once, amount: 0.1 }}
+      whileInView={variants.whileInView as Record<string, number | string>}
+    >
       {children}
-    </div>
+    </motion.div>
   );
 }
