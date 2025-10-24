@@ -1,8 +1,5 @@
-"use client";
-
-import { track } from "@vercel/analytics";
-import Link from "next/link";
 import { AnimateIn } from "./animations/animate";
+import { HeaderLink } from "./header-link";
 import { ThemeToggle } from "./theme-toggle";
 
 const Header = () => (
@@ -17,16 +14,11 @@ const Header = () => (
       <AnimateIn delay={0.4} variant="fadeUp">
         <p className="mb-8 max-w-xl items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
           Software Engineer from Lisbon. Contact me below. Currently @{" "}
-          <Link
-            className="text-primary underline-offset-4 hover:underline"
+          <HeaderLink
             href="https://www.upgraide.ai/"
-            onClick={() => track("upgraide_clicked")}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Upgraide.ai
-          </Link>{" "}
-          .
+            label="Upgraide.ai"
+            trackEvent="upgraide_clicked"
+          />
         </p>
       </AnimateIn>
 
