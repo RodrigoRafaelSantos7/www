@@ -1,5 +1,6 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { ReactNode } from "react";
+import { ConvexClientProvider } from "@/components/convex-client-provider";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 
 const Providers = ({ children }: { children: ReactNode }) => (
@@ -10,8 +11,10 @@ const Providers = ({ children }: { children: ReactNode }) => (
     enableSystem
     storageKey="rodrigosantosdev-theme"
   >
-    {children}
-    <Analytics />
+    <ConvexClientProvider>
+      {children}
+      <Analytics />
+    </ConvexClientProvider>
   </ThemeProvider>
 );
 
