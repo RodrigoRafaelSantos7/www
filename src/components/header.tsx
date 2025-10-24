@@ -1,5 +1,6 @@
 import { AnimateIn } from "./animations/animate";
 import { HeaderLink } from "./header-link";
+import { SocialMedia } from "./socials";
 import { ThemeToggle } from "./theme-toggle";
 
 const Header = () => (
@@ -23,7 +24,9 @@ const Header = () => (
       </AnimateIn>
 
       <AnimateIn delay={0.6} variant="fadeUp">
-        <div className="flex items-center gap-5" />
+        <div className="flex items-center gap-5">
+          <SocialMedia />
+        </div>
       </AnimateIn>
     </section>
   </AnimateIn>
