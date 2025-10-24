@@ -1,12 +1,12 @@
 "use client";
 
 import { type Preloaded, usePreloadedQuery } from "convex/react";
-import type { api } from "../../../../convex/_generated/api";
-import { AnimateIn } from "../../animations/animate";
+import { AnimateIn } from "@/components/animations/animate";
+import type { api } from "@/convex/_generated/api";
 import {
   ANIMATION_STAGGER_INCREMENT,
   ANIMATION_STAGGER_OFFSET,
-} from "../constants";
+} from "./constants";
 
 type ExperiencesListProps = {
   preloadedExperiences: Preloaded<typeof api.experiences.listExperiences>;

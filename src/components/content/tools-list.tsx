@@ -2,50 +2,48 @@
 
 import { type Preloaded, usePreloadedQuery } from "convex/react";
 import { AnimateIn } from "@/components/animations/animate";
-import type { api } from "../../../../convex/_generated/api";
-import AmazonWebServicesLogo from "../../icons/aws";
-import BunLogo from "../../icons/bun";
-import CloudflareLogo from "../../icons/cloudflare";
-import DrizzleORM from "../../icons/drizzle";
-import NextjsLogo from "../../icons/next";
-import Nodejs from "../../icons/nodejs";
-import PostgreSQL from "../../icons/postgre";
-import ReactLogo from "../../icons/react";
-import ReactRouterLogo from "../../icons/react-router";
-import TailwindCSS from "../../icons/tailwind";
-import TrpcLogo from "../../icons/tRPC";
-import TypeScript from "../../icons/typescript";
-import VercelLogo from "../../icons/vercel";
-import { ANIMATION_STAGGER_OFFSET } from "../constants";
+import AWS from "@/components/icons/aws";
+import Bun from "@/components/icons/bun";
+import Cloudflare from "@/components/icons/cloudflare";
+import DrizzleORM from "@/components/icons/drizzle";
+import NextJS from "@/components/icons/next";
+import NodeJS from "@/components/icons/nodejs";
+import PostgreSQL from "@/components/icons/postgre";
+import React from "@/components/icons/react";
+import ReactRouter from "@/components/icons/react-router";
+import TailwindCSS from "@/components/icons/tailwind";
+import TRPC from "@/components/icons/tRPC";
+import Typescript from "@/components/icons/typescript";
+import Vercel from "@/components/icons/vercel";
+import type { api } from "@/convex/_generated/api";
+import {
+  ANIMATION_STAGGER_OFFSET,
+  TOOL_ANIMATION_INCREMENT,
+  TOOL_GRID_WIDTH_DESKTOP,
+  TOOL_GRID_WIDTH_MOBILE,
+} from "./constants";
 
-const TOOL_ANIMATION_INCREMENT = 0.03;
-const TOOL_GRID_WIDTH_DESKTOP = "calc(20%-13px)";
-const TOOL_GRID_WIDTH_MOBILE = "calc(25%-12px)";
+type ToolsListProps = {
+  preloadedTools: Preloaded<typeof api.tools.listTools>;
+};
 
-// Logo mapping - tool titles to their components
 const logoMap: Record<
   string,
   (props: React.SVGProps<SVGSVGElement>) => React.ReactElement
 > = {
-  React: (props) => <ReactLogo {...props} />,
-  NextJS: (props) => <NextjsLogo {...props} />,
-  "React Router": (props) => <ReactRouterLogo {...props} />,
-  Typescript: (props) => <TypeScript {...props} />,
+  React: (props) => <React {...props} />,
+  NextJS: (props) => <NextJS {...props} />,
+  "React Router": (props) => <ReactRouter {...props} />,
+  Typescript: (props) => <Typescript {...props} />,
   TailwindCSS: (props) => <TailwindCSS {...props} />,
-  TRPC: (props) => <TrpcLogo {...props} />,
-  AWS: (props) => <AmazonWebServicesLogo {...props} />,
-  Cloudflare: (props) => <CloudflareLogo {...props} />,
-  Vercel: (props) => (
-    <VercelLogo className="fill-black dark:fill-white" {...props} />
-  ),
+  TRPC: (props) => <TRPC {...props} />,
+  AWS: (props) => <AWS {...props} />,
+  Cloudflare: (props) => <Cloudflare {...props} />,
+  Vercel: (props) => <Vercel {...props} />,
   DrizzleORM: (props) => <DrizzleORM {...props} />,
-  Bun: (props) => <BunLogo {...props} />,
-  NodeJS: (props) => <Nodejs {...props} />,
+  Bun: (props) => <Bun {...props} />,
+  NodeJS: (props) => <NodeJS {...props} />,
   PostgreSQL: (props) => <PostgreSQL {...props} />,
-};
-
-type ToolsListProps = {
-  preloadedTools: Preloaded<typeof api.tools.listTools>;
 };
 
 const ToolsList = ({ preloadedTools }: ToolsListProps) => {

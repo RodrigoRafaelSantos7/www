@@ -3,12 +3,12 @@
 import { track } from "@vercel/analytics";
 import { type Preloaded, usePreloadedQuery } from "convex/react";
 import { ExternalLinkIcon } from "lucide-react";
-import type { api } from "../../../../convex/_generated/api";
-import { AnimateIn } from "../../animations/animate";
+import type { api } from "@/convex/_generated/api";
+import { AnimateIn } from "../animations/animate";
 import {
   ANIMATION_STAGGER_INCREMENT,
   ANIMATION_STAGGER_OFFSET,
-} from "../constants";
+} from "./constants";
 
 type ProjectListProps = {
   preloadedProjects: Preloaded<typeof api.projects.listProjects>;
