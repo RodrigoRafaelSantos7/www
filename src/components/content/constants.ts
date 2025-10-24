@@ -1,0 +1,2 @@
+export const ANIMATION_STAGGER_OFFSET = 0.1;
+export const ANIMATION_STAGGER_INCREMENT = 0.1;
