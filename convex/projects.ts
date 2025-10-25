@@ -15,7 +15,7 @@ export const listProjects = query({
     })
   ),
   handler: async (ctx) => {
-    const projects = await ctx.db.query("projects").order("desc").collect();
+    const projects = await ctx.db.query("projects").order("asc").collect();
     return projects;
   },
 });
@@ -45,23 +45,6 @@ export const seedProjects = mutation({
         ],
       },
       {
-        title: "Seven Figure Blueprint",
-        description:
-          "Mentorship program for entrepreneurs to scale their e-commerce businesses",
-        link: "https://seven-figure-blueprint.com",
-        technologies: [
-          "Next.js",
-          "TypeScript",
-          "Tailwind CSS",
-          "Shadcn UI",
-          "Better-auth",
-          "Postgres",
-          "PrismaORM",
-          "Pnpm",
-          "Vercel",
-        ],
-      },
-      {
         title: "Coral Infantil de Setúbal",
         description:
           "A modern web platform for managing and promoting the children's choir in the Setúbal region, Portugal. Pro-bono project.",
@@ -86,11 +69,21 @@ export const seedProjects = mutation({
         technologies: ["Astro", "TypeScript", "Tailwind CSS", "MDX", "Vercel"],
       },
       {
-        title: "Compramos a sua casa",
+        title: "Seven Figure Blueprint",
         description:
-          "Compramos a sua casa is an online platform that facilitates the quick sale of properties in Portugal.",
-        link: "https://www.compramos-a-sua-casa.com/",
-        technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+          "Mentorship program for entrepreneurs to scale their e-commerce businesses",
+        link: "https://seven-figure-blueprint.com",
+        technologies: [
+          "Next.js",
+          "TypeScript",
+          "Tailwind CSS",
+          "Shadcn UI",
+          "Better-auth",
+          "Postgres",
+          "PrismaORM",
+          "Pnpm",
+          "Vercel",
+        ],
       },
     ];
 
