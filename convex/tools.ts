@@ -11,6 +11,7 @@ export const listTools = query({
         _creationTime: v.number(),
         title: v.string(),
         category: v.literal("frontend"),
+        link: v.string(),
         order: v.number(),
       })
     ),
@@ -21,6 +22,7 @@ export const listTools = query({
         title: v.string(),
         category: v.literal("backend_and_infrastructure"),
         order: v.number(),
+        link: v.string(),
       })
     ),
   }),
@@ -34,6 +36,7 @@ export const listTools = query({
       _creationTime: number;
       title: string;
       category: "frontend";
+      link: string;
       order: number;
     }>;
 
@@ -48,6 +51,7 @@ export const listTools = query({
       _creationTime: number;
       title: string;
       category: "backend_and_infrastructure";
+      link: string;
       order: number;
     }>;
 

@@ -1,6 +1,8 @@
 "use client";
 
+import { track } from "@vercel/analytics";
 import { type Preloaded, usePreloadedQuery } from "convex/react";
+import Link from "next/link";
 import { AnimateIn } from "@/components/animations/animate";
 import AWS from "@/components/icons/aws";
 import Bun from "@/components/icons/bun";
@@ -65,7 +67,13 @@ const ToolsList = ({ preloadedTools }: ToolsListProps) => {
                   key={tool._id}
                   variant="scale"
                 >
-                  <div className="group flex flex-col items-center">
+                  <Link
+                    className="group flex flex-col items-center"
+                    href={tool.link || ""}
+                    onClick={() => track(`${tool.title}_clicked`)}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
                     <div className="group-hover:-translate-y-1 relative mb-3 h-7 w-7 transition-all duration-300 ease-out group-hover:scale-110 sm:h-8 sm:w-8">
                       {Logo ? (
                         <Logo className="h-full w-full" />
@@ -76,7 +84,7 @@ const ToolsList = ({ preloadedTools }: ToolsListProps) => {
                     <span className="whitespace-nowrap text-center text-xs text-zinc-500 dark:text-zinc-400">
                       {tool.title}
                     </span>
-                  </div>
+                  </Link>
                 </AnimateIn>
               );
             })}

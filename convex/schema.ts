@@ -22,6 +22,7 @@ export default defineSchema({
       v.literal("frontend"),
       v.literal("backend_and_infrastructure")
     ),
+    link: v.string(),
     order: v.number(),
   }).index("by_category", ["category", "order"]),
 });
