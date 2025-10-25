@@ -18,6 +18,7 @@ import PostgreSQL from "@/components/icons/postgre";
 import Prisma from "@/components/icons/prisma";
 import React from "@/components/icons/react";
 import ReactRouter from "@/components/icons/react-router";
+import Stripe from "@/components/icons/stripe";
 import TailwindCSS from "@/components/icons/tailwind";
 import TRPC from "@/components/icons/tRPC";
 import Typescript from "@/components/icons/typescript";
@@ -53,6 +54,7 @@ const logoMap: Record<
   Clerk: (props) => <Clerk {...props} />,
   "Better Auth": (props) => <BetterAuth {...props} />,
   Workers: (props) => <CloudflareWorks {...props} />,
+  Stripe: (props) => <Stripe {...props} />,
 };
 
 const ToolsList = ({ preloadedTools }: ToolsListProps) => {

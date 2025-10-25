@@ -175,6 +175,12 @@ export const seedTools = mutation({
         link: "https://workers.cloudflare.com/",
         order: 12,
       },
+      {
+        title: "Stripe",
+        category: "backend_and_infrastructure" as const,
+        link: "https://stripe.com",
+        order: 13,
+      },
     ];
 
     await ctx.db
