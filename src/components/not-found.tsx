@@ -20,8 +20,21 @@ const NotFound = () => (
           <Empty className="md:m-24">
             <AnimateIn delay={0.2} variant="fadeUp">
               <EmptyHeader>
-                <EmptyTitle className="font-black font-mono text-8xl">
-                  404
+                <EmptyTitle className="whitespace-pre font-mono text-[0.5rem] text-accent md:text-xl">
+                  {`
+       _             _            _           
+   _  /\\ \\         / /\\       _  /\\ \\         
+  /\\_\\\\ \\ \\       / /  \\     /\\_\\\\ \\ \\        
+ / / / \\ \\ \\     / / /\\ \\   / / / \\ \\ \\       
+/ / /   \\ \\ \\   / / /\\ \\ \\ / / /   \\ \\ \\      
+\\ \\ \\____\\ \\ \\ /_/ /  \\ \\ \\\\ \\ \\____\\ \\ \\     
+ \\ \\________\\ \\\\ \\ \\   \\ \\ \\\\ \\________\\ \\    
+  \\/________/\\ \\\\ \\ \\   \\ \\ \\/________/\\ \\   
+            \\ \\ \\\\ \\ \\___\\ \\ \\         \\ \\ \\  
+             \\ \\_\\\\ \\/____\\ \\ \\         \\ \\_\\ 
+              \\/_/ \\_________\\/          \\/_/ 
+                                              
+          `}
                 </EmptyTitle>
                 <EmptyDescription className="text-nowrap">
                   The page you're looking for might have been <br />
