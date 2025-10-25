@@ -22,7 +22,3 @@ export const TAB_TRIGGER_CLASS = cn(
 
 export const ANIMATION_STAGGER_OFFSET = 0.1;
 export const ANIMATION_STAGGER_INCREMENT = 0.1;
-
-export const TOOL_ANIMATION_INCREMENT = 0.03;
-export const TOOL_GRID_WIDTH_DESKTOP = "calc(20%-13px)";
-export const TOOL_GRID_WIDTH_MOBILE = "calc(25%-12px)";

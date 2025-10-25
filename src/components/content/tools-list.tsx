@@ -5,12 +5,17 @@ import { type Preloaded, usePreloadedQuery } from "convex/react";
 import Link from "next/link";
 import { AnimateIn } from "@/components/animations/animate";
 import AWS from "@/components/icons/aws";
+import BetterAuth from "@/components/icons/better-auth";
 import Bun from "@/components/icons/bun";
+import Clerk from "@/components/icons/clerk";
 import Cloudflare from "@/components/icons/cloudflare";
+import CloudflareWorks from "@/components/icons/cloudflare-works";
+import Convex from "@/components/icons/convex";
 import DrizzleORM from "@/components/icons/drizzle";
 import NextJS from "@/components/icons/next";
 import NodeJS from "@/components/icons/nodejs";
 import PostgreSQL from "@/components/icons/postgre";
+import Prisma from "@/components/icons/prisma";
 import React from "@/components/icons/react";
 import ReactRouter from "@/components/icons/react-router";
 import TailwindCSS from "@/components/icons/tailwind";
@@ -18,16 +23,13 @@ import TRPC from "@/components/icons/tRPC";
 import Typescript from "@/components/icons/typescript";
 import Vercel from "@/components/icons/vercel";
 import type { api } from "@/convex/_generated/api";
-import {
-  ANIMATION_STAGGER_OFFSET,
-  TOOL_ANIMATION_INCREMENT,
-  TOOL_GRID_WIDTH_DESKTOP,
-  TOOL_GRID_WIDTH_MOBILE,
-} from "./constants";
 
 type ToolsListProps = {
   preloadedTools: Preloaded<typeof api.tools.listTools>;
 };
+
+const TOOL_ANIMATION_BASE_DELAY = 0.1;
+const TOOL_ANIMATION_INCREMENT = 0.03;
 
 const logoMap: Record<
   string,
@@ -36,7 +38,7 @@ const logoMap: Record<
   React: (props) => <React {...props} />,
   NextJS: (props) => <NextJS {...props} />,
   "React Router": (props) => <ReactRouter {...props} />,
-  Typescript: (props) => <Typescript {...props} />,
+  TypeScript: (props) => <Typescript {...props} />,
   TailwindCSS: (props) => <TailwindCSS {...props} />,
   TRPC: (props) => <TRPC {...props} />,
   AWS: (props) => <AWS {...props} />,
@@ -46,6 +48,11 @@ const logoMap: Record<
   Bun: (props) => <Bun {...props} />,
   NodeJS: (props) => <NodeJS {...props} />,
   PostgreSQL: (props) => <PostgreSQL {...props} />,
+  Prisma: (props) => <Prisma {...props} />,
+  Convex: (props) => <Convex {...props} />,
+  Clerk: (props) => <Clerk {...props} />,
+  "Better Auth": (props) => <BetterAuth {...props} />,
+  "Cloudflare Workers": (props) => <CloudflareWorks {...props} />,
 };
 
 const ToolsList = ({ preloadedTools }: ToolsListProps) => {
@@ -60,9 +67,9 @@ const ToolsList = ({ preloadedTools }: ToolsListProps) => {
               const Logo = logoMap[tool.title];
               return (
                 <AnimateIn
-                  className={`w-[${TOOL_GRID_WIDTH_MOBILE}] sm:w-[${TOOL_GRID_WIDTH_DESKTOP}]`}
+                  className="w-[calc(25%-12px)] sm:w-[calc(20%-13px)]"
                   delay={
-                    ANIMATION_STAGGER_OFFSET + index * TOOL_ANIMATION_INCREMENT
+                    TOOL_ANIMATION_BASE_DELAY + index * TOOL_ANIMATION_INCREMENT
                   }
                   key={tool._id}
                   variant="scale"
@@ -99,14 +106,20 @@ const ToolsList = ({ preloadedTools }: ToolsListProps) => {
               const Logo = logoMap[tool.title];
               return (
                 <AnimateIn
-                  className={`w-[${TOOL_GRID_WIDTH_MOBILE}] sm:w-[${TOOL_GRID_WIDTH_DESKTOP}]`}
+                  className="w-[calc(25%-12px)] sm:w-[calc(20%-13px)]"
                   delay={
-                    ANIMATION_STAGGER_OFFSET + index * TOOL_ANIMATION_INCREMENT
+                    TOOL_ANIMATION_BASE_DELAY + index * TOOL_ANIMATION_INCREMENT
                   }
                   key={tool._id}
                   variant="scale"
                 >
-                  <div className="group flex flex-col items-center">
+                  <Link
+                    className="group flex flex-col items-center"
+                    href={tool.link || ""}
+                    onClick={() => track(`${tool.title}_clicked`)}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
                     <div className="group-hover:-translate-y-1 relative mb-3 h-7 w-7 transition-all duration-300 ease-out group-hover:scale-110 sm:h-8 sm:w-8">
                       {Logo ? (
                         <Logo className="h-full w-full" />
@@ -117,7 +130,7 @@ const ToolsList = ({ preloadedTools }: ToolsListProps) => {
                     <span className="whitespace-nowrap text-center text-xs text-zinc-500 dark:text-zinc-400">
                       {tool.title}
                     </span>
-                  </div>
+                  </Link>
                 </AnimateIn>
               );
             })}
