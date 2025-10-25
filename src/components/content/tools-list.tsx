@@ -52,7 +52,7 @@ const logoMap: Record<
   Convex: (props) => <Convex {...props} />,
   Clerk: (props) => <Clerk {...props} />,
   "Better Auth": (props) => <BetterAuth {...props} />,
-  "Cloudflare Workers": (props) => <CloudflareWorks {...props} />,
+  Workers: (props) => <CloudflareWorks {...props} />,
 };
 
 const ToolsList = ({ preloadedTools }: ToolsListProps) => {

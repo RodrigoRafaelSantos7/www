@@ -1,4 +1,5 @@
 import { Content } from "@/components/content/content";
+
 import { Header } from "@/components/header/header";
 
 const Page = () => (

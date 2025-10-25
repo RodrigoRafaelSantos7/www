@@ -170,7 +170,7 @@ export const seedTools = mutation({
         order: 11,
       },
       {
-        title: "Cloudflare Workers",
+        title: "Workers",
         category: "backend_and_infrastructure" as const,
         link: "https://workers.cloudflare.com/",
         order: 12,
