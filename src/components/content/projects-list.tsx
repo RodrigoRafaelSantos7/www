@@ -5,6 +5,7 @@ import { type Preloaded, usePreloadedQuery } from "convex/react";
 import { ExternalLinkIcon } from "lucide-react";
 import type { api } from "@/convex/_generated/api";
 import { AnimateIn } from "../animations/animate";
+import GithubIcon from "../icons/github";
 import {
   ANIMATION_STAGGER_INCREMENT,
   ANIMATION_STAGGER_OFFSET,
@@ -41,7 +42,8 @@ const ProjectsList = ({ preloadedProjects }: ProjectListProps) => {
                             rel="noopener noreferrer"
                             target="_blank"
                           >
-                            GitHub <ExternalLinkIcon className="h-3 w-3" />
+                            <GithubIcon className="h-3 w-3" />{" "}
+                            <ExternalLinkIcon className="h-3 w-3" />
                           </a>
                         ) : null}
                         {project.link ? (
