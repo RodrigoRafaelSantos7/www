@@ -8,5 +8,5 @@ export function cn(...inputs: ClassValue[]) {
 
 export const getUrl = () =>
   env.NODE_ENV !== "production"
-    ? `http://${env.VERCEL_URL}`
-    : `https://${env.VERCEL_URL}`;
+    ? "http://localhost:3000"
+    : "https://www.rodrigosantos.dev";
