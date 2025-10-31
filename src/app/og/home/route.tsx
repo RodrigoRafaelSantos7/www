@@ -25,7 +25,7 @@ async function loadGoogleFont(font: string, text: string) {
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const title = searchParams.get("title");
-  const text = title ? `nexxel • ${title}` : "nexxel • home";
+  const text = title ? `Rodrigo Santos • ${title}` : "Rodrigo Santos • home";
 
   return new ImageResponse(
     <div
@@ -67,7 +67,7 @@ export async function GET(request: Request) {
       >
         <span
           style={{
-            color: "#ff6b35",
+            color: "#EFC17F",
             fontSize: 48,
             flexShrink: 0,
           }}
